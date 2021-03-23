@@ -5,7 +5,7 @@
     ViewBag.Title = "Joel's Collection";
 }
 
-@model IEnumerable<JoelHiltonMovieApp_AdamNeumiller.Models.AddMovieResponse>
+@model IEnumerable<Movie>
 
 
 
@@ -13,36 +13,26 @@
 <div class="text-center" >
 
     <h2>Joel's Collection</h2>
-    <table class="center" >
+    <table class="center table text-center table-striped table-dark table-hover"  >
         <thead class="center">
             <tr>
-            <th>Movie Title</th>
-            <th>Category</th>
-            <th>Year</th>
-            <th>Director</th>
-            <th>Rating</th>
-            <th>Edited</th>
-            <th>Lent To</th>
-            <th>Notes</th>
+                <th>Movie Title</th>
+                <th>Category</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             
-            @foreach (JoelHiltonMovieApp_AdamNeumiller.Models.AddMovieResponse x in Model)
+            @foreach (JoelHiltonMovieApp_AdamNeumiller.Models.Movie x in Model)
             {
-            <tr>
-                <td>@x.Title</td>
-                <td>@x.Category</td>
-                <td>@x.Year</td>
-                <td>@x.Director</td>
-                <td>@x.Rating</td>
-                <td>@x.Edited</td>
-                <td>@x.LentTo</td>
-                <td>@x.Notes</td>
-
-
-
-            </tr>
+                <partial name="MyMoviesSummary" model="x" />
             }
 
  

@@ -2,16 +2,21 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.Title = "Add a Movie to Joel's Collection.";
-
 }
+
 
 @model JoelHiltonMovieApp_AdamNeumiller.Models.Movie;
 
-<form asp-action="AddMovie" method="post">
+<h2> You are editing @Model.Title</h2>
+
+<form asp-action="EditMovie" method="post">
+    <div>
+        
+        <input asp-for="MovieID" type="hidden" value="@Model.MovieID" />
+    </div>
     <div>
         <label asp-for="Title" >Movie Title</label>
-        <input asp-for="Title" />
+        <input asp-for="Title" value="@Model.Title"/>
     </div>
     <div>
         <label asp-for="Category">Category</label>
@@ -19,11 +24,11 @@
     </div>
     <div>
         <label asp-for="Director">Director</label>
-        <input asp-for="Director" />
+        <input asp-for="Director" value="@Model.Director" />
     </div>
     <div>
         <label asp-for=" Rating">Rating</label>
-        <select asp-for="Rating">
+        <select asp-for="Rating" value="@Model.Rating">
             <option value="G"> G </option>
             <option value="TV-Y">TV-Y </option>
             <option value="PG"> PG </option>
@@ -39,19 +44,19 @@
     </div>
     <div>
         <label asp-for="Year">Year</label>
-        <input asp-for="Year" />
+        <input asp-for="Year" value="@Model.Year" />
     </div>
     <div>
         <label asp-for="Edited">Edited</label>
-        <input type="checkbox" asp-for="Edited" />
+        <input type="checkbox" asp-for="Edited" value="@Model.Edited" />
     </div>
     <div>
         <label asp-for="LentTo">Lent To</label>
-        <input asp-for="LentTo" />
+        <input asp-for="LentTo" value="@Model.LentTo" />
     </div>
     <div>
         <label asp-for="Notes">Notes</label>
-        <input asp-for="Notes" />
+        <input asp-for="Notes" value="@Model.Notes" />
     </div>
     <button type="submit"> Submit </button>
 </form>

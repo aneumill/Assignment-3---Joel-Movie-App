@@ -1,11 +1,14 @@
+using JoelHiltonMovieApp_AdamNeumiller.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,6 +27,18 @@ namespace JoelHiltonMovieApp_AdamNeumiller
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+           
+            services.AddDbContext<MovieDBContext>(options =>
+            {
+                string path = Directory.GetCurrentDirectory();
+                //Solution to properly save the database to the proeject file. Puts the current project file directory into the connection string
+                options.UseSqlite(Configuration["ConnectionStrings:MovieConnection"]);
+
+                //.Replace("|DataDirectory|", path));
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

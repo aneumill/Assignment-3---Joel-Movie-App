@@ -7,11 +7,11 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Models
 {
     public static class JoelsCollection
     {
-        private static List<AddMovieResponse> movies = new List<AddMovieResponse>();
+        private static List<Movie> movies = new List<Movie>();
 
-        public static IEnumerable<AddMovieResponse> MovieCollection => movies; 
+        public static IEnumerable<Movie> MovieCollection => movies; 
 
-        public static void AddMovie(AddMovieResponse movie)
+        public static void AddMovie(Movie movie)
         {
             movies.Add(movie);
         }

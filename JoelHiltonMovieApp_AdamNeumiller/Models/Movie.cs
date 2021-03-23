@@ -6,8 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JoelHiltonMovieApp_AdamNeumiller.Models
 {
-    public class AddMovieResponse
+    public class Movie
     {
+        [Key]
+        public int MovieID { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
