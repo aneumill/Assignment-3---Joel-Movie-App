@@ -5,22 +5,24 @@
 }
 
 @model JoelHiltonMovieApp_AdamNeumiller.Models.Movie;
-<div>
-
-    @if (Model.Title.ToUpper() != "INDEPENDENCE DAY")
-    {
-        <h1> Success!</h1>
-        <p> <b>@Model.Title</b> has been edited successfully</p>
-    }
-    else
-    {
-        <h1> Failure </h1>
-        <p> <b>@Model.Title</b> is not the "Most American Movie Ever. Rockie IV is down-right AMERICAN. 'MERICA. Your edit was not committed </p>
-    }
-
-
+  
+<!--This is the confirmation page show after editting a page-->
     <div>
-        Click <a asp-action="MyMovies"> here </a> to view Joel's entire collection.
-    </div>
 
-</div>
+        @if (Model.Title.ToUpper() != "INDEPENDENCE DAY")
+        {
+            <h1> Success!</h1>
+            <p> <b>@Model.Title</b> has been edited successfully</p>
+        }
+        else
+        {
+            <h1> Failure </h1>
+            <p> <b>@Model.Title</b> is not the "Most American Movie Ever. Rockie IV is down-right AMERICAN. 'MERICA. Your edit was not committed </p>
+        }
+
+
+        <div>
+            Click <a asp-action="MyMovies"> here </a> to view Joel's entire collection.
+        </div>
+
+    </div>

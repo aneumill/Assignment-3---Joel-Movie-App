@@ -4,6 +4,7 @@
 @{
 
 }
+<!-- This is  the partial view  that is inputted into MyMovies -->
 
 @model JoelHiltonMovieApp_AdamNeumiller.Models.Movie 
 
@@ -17,6 +18,7 @@
     <td>@Model.LentTo</td>
     <td>@Model.Notes</td>
     <td>
+        <!--Submission form for the Edit Button-->
         <form id="@Model.MovieID" method="post">
             <input type="hidden" asp-for="MovieID" />
             <input type="hidden" asp-for="Title" />
@@ -34,6 +36,7 @@
         </form>
     </td>
     <td>
+        <!--Submission form for the Delete Button-->
         <form id="@Model.MovieID" asp-action="RemoveMovie" method="post">
             <input type="hidden" asp-for="MovieID" />
             <input type="hidden" asp-for="Title" />

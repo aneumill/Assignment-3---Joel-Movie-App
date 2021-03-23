@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
+//This is the Movie Model 
 namespace JoelHiltonMovieApp_AdamNeumiller.Models
 {
     public class Movie

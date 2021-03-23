@@ -19,6 +19,7 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        //Instantiate the MovieDBContext as _context
         private MovieDBContext _context { get; set; }
 
         public HomeController(ILogger<HomeController> logger, MovieDBContext con)
@@ -30,6 +31,7 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
 
         }
 
+        //Index page view get
         public IActionResult Index()
         {
             return View();
@@ -38,13 +40,14 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
         {
             return View();
         }
-        
+        //The ASP-Action for the AddMovie page (GET)
         [HttpGet]
         public IActionResult AddMovie()
         {
             return View();
         }
 
+        //The ASP-Action for the AddMovie page (Post), the form submission is passed 
         [HttpPost]
         public IActionResult AddMovie(Movie formsubmission)
         {
@@ -53,8 +56,6 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
                 //THIS IS THE FIRST FILTER. IF THE MODEL IS VALID THEN IT DROPS IN TO THE IF STATEMENT. IF THE VALUE IS INDPENDENCE DAY THEN IT 
                 // RETURNS A VIEW SAYING THAT IT COULD NOT BE ADDED. IF IT IS NOT INDPENDENCE DAY THEN THEN A VIEW IS RETURNED SAYING THAT THE 
                 // FORM WAS SUCESSFULLY SUBMITED. THE OTHER FILTER USING LINQ IS SHOWN BELOW. 
-
-
                 if (formsubmission.Title.ToUpper() != "INDEPENDENCE DAY")
                 {
                     _context.Movie.Add(formsubmission);
@@ -65,13 +66,14 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
                 }
                 else
                 {
-
+                    //Returns the confirmation.cshtml page
                     return View("Confirmation");
 
                 }
             }
             else
             {
+                //Returns the page with the passed form
                 return View(formsubmission);
             }
         }
@@ -102,6 +104,7 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
                 }
                 else
                 {
+                    //Returns EditConfirmation page
 
                     return View("EditConfirmation");
 
@@ -115,13 +118,17 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
 
         [HttpPost]
         public IActionResult RemoveMovie(Movie formsubmission)
+            
         {
+            //instantiate a querable movie object equal to the DBcontextfile where the movie ID equals the passed in form
             IQueryable<Movie> queryable = _context.Movie.Where(p => p.MovieID == formsubmission.MovieID);
+            //Loop through the querable object and remove all data where those MovieIDs match
             foreach (var x in queryable)
             {
                 _context.Movie.Remove(x);
             }
             _context.SaveChanges();
+            //Return the delete confirmation page
             return View("DeleteConfirmation");
         }
 
@@ -138,6 +145,7 @@ namespace JoelHiltonMovieApp_AdamNeumiller.Controllers
         [HttpPost]
         public IActionResult MyMovies(Movie formsubmission)
         {
+            //Returns the edit move view
             return View("EditMovie", formsubmission);
         }
 
